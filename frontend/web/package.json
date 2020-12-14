@@ -1,0 +1,6 @@
+{
+    "scripts": {
+        "start": "npm build",
+        "build": "npm build"
+    }
+}
