@@ -95,7 +95,7 @@ fn cargo_install_watch() -> Result<()> {
         return Ok(());
     }
 
-    let status = Command::new(cargo()).args(&["install", "watch"]).status()?;
+    let status = Command::new(cargo()).args(&["install", "cargo-watch"]).status()?;
 
     if !status.success() {
         return Err(anyhow!("'cargo install watch' failed"));
