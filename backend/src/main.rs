@@ -1,16 +1,15 @@
-use actix_web::{App, HttpServer};
+use actix_web::{middleware::Logger, App, HttpServer};
 #[cfg(feature = "ui")]
 use actix_web_static_files;
-
-use std::collections::HashMap;
 
 #[cfg(feature = "ui")]
 use {{crate_name}}_frontend::generate;
 
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
+    env_logger::init();
     HttpServer::new(move || {
-        let mut app = App::new();
+        let mut app = App::new().wrap(Logger::default());
         #[cfg(feature = "ui")]
         {
             let generated = generate();
